@@ -7,11 +7,12 @@
 
 import Foundation
  
-// Use Case 3: generates meal recommendations based on a student's remaining food budget and the ingredients they currently have available. Repository gives use case recipes so it can apply the business rules
-// Business rules:
-// 1. A recipe must be affordable based on the student's remaining budget
-// 2. Recipes using ingredients the student already has are prioritised
-// 3. Recipes that require ingredients the student does not have may still be recommended if they are affordable
+/// Use Case 3: generates meal recommendations based on a student's remaining food budget and the ingredients they currently have available. Repository gives use case recipes so it can apply the business rules
+/// 
+/// Business rules:
+/// 1. A recipe must be affordable based on the student's remaining budget
+/// 2. Recipes using ingredients the student already has are prioritised
+/// 3. Recipes that require ingredients the student does not have may still be recommended if they are affordable
 
 struct GenerateMealRecommendationsUseCase { // Business logic: given the student's remaining budget and available ingredients, which recipes should be recommended?
     enum RecommendationError: LocalizedError, Equatable {

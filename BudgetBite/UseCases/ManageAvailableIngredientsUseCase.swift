@@ -7,11 +7,12 @@
 
 import Foundation
  
-// Use Case 2: manages the ingredients currently available to a university student. Repository gives use case ingredients so it can apply the business rules
-// Business rules:
-// 1. An ingredient must have a quantity greater than 0
-// 2. Adding an existing ingredient increases its current quantity
-// 3. Removing an ingredient removes it from the available ingredients
+/// Use Case 2: manages the ingredients currently available to a university student. Repository gives use case ingredients so it can apply the business rules
+/// 
+/// Business rules:
+/// 1. An ingredient must have a quantity greater than 0
+/// 2. Adding an existing ingredient increases its current quantity
+/// 3. Removing an ingredient removes it from the available ingredients
 
 struct ManageAvailableIngredientsUseCase { // Business logic: what should happen when a student adds/removes an ingredient
     enum IngredientError: LocalizedError, Equatable {

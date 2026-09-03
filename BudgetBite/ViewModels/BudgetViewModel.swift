@@ -8,8 +8,7 @@
 import Foundation
 import Combine
 
-// Manages the budget data displayed by the SwiftUI view and communicates with UpdateFoodBudgetUseCase i.e., what happens when the user interacts with the view
-// Passes the current budget and spending amount to the use case and then updates the budget
+/// Manages the budget data displayed by the SwiftUI view and communicates with UpdateFoodBudgetUseCase i.e., what happens when the user interacts with the view
 
 final class BudgetViewModel: ObservableObject {
     @Published var budget: Budget

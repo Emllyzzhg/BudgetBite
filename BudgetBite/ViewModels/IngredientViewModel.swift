@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-// Manages the ingredients data displayed by the SwiftUI view and communicates with ManageAvailableIngredientsUseCase i.e., what happens when the user interacts with the view
+/// Manages the ingredients data displayed by the SwiftUI view and communicates with ManageAvailableIngredientsUseCase i.e., what happens when the user interacts with the view
 
 final class IngredientViewModel: ObservableObject {
     @Published var ingredients: [Ingredient] = []
