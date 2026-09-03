@@ -1,5 +1,5 @@
 //
-//  IngredientRepository.swift for student's ingredients
+//  IngredientRepository.swift for student's ingredients data is stored/managed
 //  BudgetBite
 //
 //  Created by emily zhang on 31/8/2026.

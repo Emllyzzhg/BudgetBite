@@ -1,5 +1,5 @@
 //
-//  RecipeRepository.swift where the recipe repository must be able to load, add, update and delete a recipe
+//  RecipeRepository.swift for how recipe data is stored/managed
 //  BudgetBite
 //
 //  Created by emily zhang on 31/8/2026.

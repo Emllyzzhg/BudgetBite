@@ -17,7 +17,7 @@ class LocalIngredientRepository: IngredientRepository {
     func load() -> [Ingredient] {
         let localIngredients = [
             Ingredient(name: "Egg", quantity: 6),
-            Ingredient(name: "Rice", quantity: 1), //what does 1 mean here?
+            Ingredient(name: "Rice", quantity: 1),
             Ingredient(name: "Carrots", quantity: 3)
         ]
         
