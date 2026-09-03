@@ -7,7 +7,7 @@
 
 import Foundation
  
-// Generates meal recommendations based on a student's remaining food budget and the ingredients they currently have available
+// Use Case 3: generates meal recommendations based on a student's remaining food budget and the ingredients they currently have available. Repository gives use case recipes so it can apply the business rules
 // Business rules:
 // 1. A recipe must be affordable based on the student's remaining budget
 // 2. Recipes using ingredients the student already has are prioritised

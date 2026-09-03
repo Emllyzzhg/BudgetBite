@@ -1,0 +1,27 @@
+[
+    {
+        "id": "ingredient001",
+        "name": "Eggs",
+        "quantity": 6
+    },
+    {
+        "id": "ingredient002",
+        "name": "Rice",
+        "quantity": 1
+    },
+    {
+        "id": "ingredient003",
+        "name": "Carrots",
+        "quantity": 3
+    }
+    {
+        "id": "ingredient004",
+        "name": "Chicken",
+        "quantity": 2
+    },
+    {
+        "id": "ingredient006",
+        "name": "Pasta",
+        "quantity": 1
+    }
+]

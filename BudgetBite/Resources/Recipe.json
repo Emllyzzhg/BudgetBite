@@ -1,0 +1,52 @@
+[
+    {
+        "id": "recipe001",
+        "name": "Egg Fried Rice",
+        "ingredients": [
+            "Eggs",
+            "Rice",
+            "Carrots"
+        ],
+        "estimatedCost": 4.50
+    },
+    {
+        "id": "recipe002",
+        "name": "Chicken Rice Bowl",
+        "ingredients": [
+            "Chicken",
+            "Rice",
+            "Carrots"
+        ],
+        "estimatedCost": 5.50
+    },
+    {
+        "id": "recipe003",
+        "name": "Vegetable Pasta",
+        "ingredients": [
+            "Pasta",
+            "Tomato",
+            "Carrots"
+        ],
+        "estimatedCost": 4.00
+    }
+    {
+            "id": "recipe004",
+            "name": "Chicken Pasta",
+            "ingredients": [
+                "Chicken",
+                "Pasta",
+                "Tomato"
+            ],
+            "estimatedCost": 6.00
+        },
+        {
+            "id": "recipe006",
+            "name": "Vegetable Rice Bowl",
+            "ingredients": [
+                "Rice",
+                "Carrots",
+                "Tomato"
+            ],
+            "estimatedCost": 4.50
+        }
+]

@@ -7,7 +7,7 @@
 
 import Foundation
  
-// Use Case 1: updates a university student's remaining food budget after spending
+// Use Case 1: updates a university student's remaining food budget after spending. Receives the current budget and spending amount to apply the budget business rules
 // Business rules:
 // 1. Spending cannot be less than $0 (negative number)
 // 2. Spending cannot be greater than the student's remaining budget

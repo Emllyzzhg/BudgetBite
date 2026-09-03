@@ -7,7 +7,7 @@
 
 import Foundation
  
-// Manages the ingredients currently available to a university student
+// Use Case 2: manages the ingredients currently available to a university student. Repository gives use case ingredients so it can apply the business rules
 // Business rules:
 // 1. An ingredient must have a quantity greater than 0
 // 2. Adding an existing ingredient increases its current quantity
@@ -43,7 +43,7 @@ struct ManageAvailableIngredientsUseCase { // Business logic: what should happen
     }
     func remove(_ ingredient: Ingredient) throws { // Function to remove ingredient
         guard repository.ingredients.contains( // Checks if repositiory contains this ID
-            where: { storedIngredient in storedIngredient.id.id == ingredient.id }
+            where: { storedIngredient in storedIngredient.id == ingredient.id }
         ) else {
             throw IngredientError.ingredientNotFound
         }
