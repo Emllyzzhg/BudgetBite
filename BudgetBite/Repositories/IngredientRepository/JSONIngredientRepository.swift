@@ -16,12 +16,12 @@ class JSONIngredientRepository: IngredientRepository {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        fileURL = documentsURL.appendingPathComponent("Ingredients.json")
+        fileURL = documentsURL.appendingPathComponent("Ingredient.json")
         
         // Copy the bundled JSON to Documents the first time
         if !fileManager.fileExists(atPath: fileURL.path) {
             if let bundledURL = Bundle.main.url(
-                forResource: "Ingredients",
+                forResource: "Ingredient",
                 withExtension: "json"
             ){
                 try? fileManager.copyItem(
@@ -48,7 +48,7 @@ class JSONIngredientRepository: IngredientRepository {
     }
     
     func add(_ ingredient: Ingredient) {
-        ingredient.append(ingredient)
+        ingredients.append(ingredient)
         save()
     }
     

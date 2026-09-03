@@ -16,12 +16,12 @@ class JSONRecipeRepository: RecipeRepository {
         let fileManager = FileManager.default
         let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        fileURL = documentsURL.appendingPathComponent("Recipes.json")
+        fileURL = documentsURL.appendingPathComponent("Recipe.json")
         
         // Copy the bundled JSON to Documents the first time
         if !fileManager.fileExists(atPath: fileURL.path) {
             if let bundledURL = Bundle.main.url(
-                forResource: "Recipes",
+                forResource: "Recipe",
                 withExtension: "json"
             ){
                 try? fileManager.copyItem(
