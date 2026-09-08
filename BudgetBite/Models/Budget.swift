@@ -7,11 +7,13 @@
 
 import Foundation
  
-/// Domain model for a student budgeting scenario: represents a student's available food budget for the week
-/// 
+/// Domain model for a student budgeting scenario: Budget represents a student's available food budget for the week. weeklyBudget is the amount the student has allocated for food for the week; remainingBudget is the amount still available to spend
+///
 /// Business rules:
 /// 1. The remaining budget cannot be greater than the weekly budget
 /// 2. The remaining budget cannot be negative
+/// 3. Spending reduces the remaining budget
+
 struct Budget: Identifiable, Codable {
    
     var id: String = UUID().uuidString

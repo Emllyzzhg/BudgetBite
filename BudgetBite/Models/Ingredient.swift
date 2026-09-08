@@ -7,11 +7,12 @@
 
 import Foundation
  
-/// Domain model for a student budgeting scenario: represents food currently available to a student
-/// 
+/// Domain model for a student budgeting scenario: Ingredient represents food currently available to a student
+///
 /// Business rules:
-/// 1. An ingredient must have a name
-/// 2. The quantity must be greater than zero
+/// 1. The quantity must be greater than zero
+/// 2. The student can increase or decrease the quantity
+
 struct Ingredient: Identifiable, Codable {
    
     var id: String = UUID().uuidString
