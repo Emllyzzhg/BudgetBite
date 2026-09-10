@@ -21,7 +21,7 @@ struct UpdateFoodBudgetUseCase { // Business logic: what should happen to the fo
         var errorDescription: String? {
             switch self {
             case .negativeSpending:
-                return "Spending amount cannot be less than $0. Please enter a valid amount."
+                return "The spending amount cannot be negative. Please enter a valid amount."
             case .spendingExceedsRemainingBudget:
                 return "This purchase is greater than your remaining food budget. Please enter a smaller amount."
             }

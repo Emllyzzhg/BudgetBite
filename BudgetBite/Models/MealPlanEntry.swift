@@ -7,7 +7,7 @@
 
 import Foundation
  
-/// Domain model for a student budgeting scenario: MealPlanEntry represents a meal selected by the university student for their meal plan. plannedDate is the date the student is going to eat the meal
+/// Domain model for a student budgeting scenario: MealPlanEntry represents a meal selected by the university student for their meal plan. plannedDate is the date the student is going to eat the meal; recipe is the meal the student has selected
 ///
 /// Business rules:
 /// 1. A meal plan entry must reference a recipe
@@ -16,6 +16,6 @@ import Foundation
 struct MealPlanEntry: Identifiable, Codable {
     
     var id: String = UUID().uuidString
-    var recipeID: String
+    var recipe: Recipe
     var plannedDate: Date
 }

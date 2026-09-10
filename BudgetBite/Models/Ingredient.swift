@@ -7,7 +7,7 @@
 
 import Foundation
  
-/// Domain model for a student budgeting scenario: Ingredient represents food currently available to a student
+/// Domain model for a student budgeting scenario: Ingredient represents food currently available to a student. name refers to the type of food the student has available; quantity is how much of that ingredient the student currently has
 ///
 /// Business rules:
 /// 1. The quantity must be greater than zero

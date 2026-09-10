@@ -7,7 +7,7 @@
 
 import Foundation
  
-/// Domain model for a student budgeting scenario: Budget represents a student's available food budget for the week. weeklyBudget is the amount the student has allocated for food for the week; remainingBudget is the amount still available to spend
+/// Domain model for a student budgeting scenario: Budget represents a student's available food budget for the week. weeklyBudget is the total amount the student has allocated for food spending for the week; remainingBudget is the amount still available to spend
 ///
 /// Business rules:
 /// 1. The remaining budget cannot be greater than the weekly budget

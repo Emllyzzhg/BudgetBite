@@ -8,24 +8,30 @@
 import Foundation
 import Combine
 
-/// Manages the ingredients data displayed by the SwiftUI view and communicates with ManageAvailableIngredientsUseCase i.e., what happens when the user interacts with the view
+/// Manages the ingredients data displayed by the SwiftUI view
+/// IngredientViewModel communicates with ManageAvailableIngredientsUseCase to add and remove ingredients and loads current ingredients from ingredient repository
 
 final class IngredientViewModel: ObservableObject {
+    /// The current list of available ingredients
     @Published var ingredients: [Ingredient] = []
-    private let repository: IngredientRepository // Stores the IngredientRepository and ManageAvailableUseCase used internally by this ViewModel
+    /// Stores the IngredientRepository and ManageAvailableUseCase to be used by this view model
+    private let repository: IngredientRepository
     private let manageIngredientsUseCase: ManageAvailableIngredientsUseCase
 
-    init(repository: IngredientRepository) { // Set up the ViewModel with the ingredient repository, create the ManageAvailableIngredientsUseCase and load the current ingredients
+    /// Creates the ViewModel with the ingredient repository and the ManageAvailableIngredientsUseCase, then loads the current ingredients
+    init(repository: IngredientRepository) {
         self.repository = repository
         self.manageIngredientsUseCase = ManageAvailableIngredientsUseCase(
                 repository: repository
             )
         load()
     }
-    func load() { // Function to load the current ingredients from the repository
+    /// Function to load the current ingredients from the repository
+    func load() {
         ingredients = repository.ingredients
     }
-    func add(_ ingredient: Ingredient) { // Function to add an ingredient using the use case and reloads the ingredient list
+    /// Function to add an ingredient using the use case and reloads the ingredient list
+    func add(_ ingredient: Ingredient) {
         do {
             try manageIngredientsUseCase.add(ingredient)
             load()
@@ -33,7 +39,8 @@ final class IngredientViewModel: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    func delete(_ ingredient: Ingredient) { // Function to delete an ingredient using the use case and reloads the ingredient list
+    /// Function to delete an ingredient from the available ingredients and reloads the ingredient list
+    func delete(_ ingredient: Ingredient) {
         do {
             try manageIngredientsUseCase.remove(ingredient)
             load()

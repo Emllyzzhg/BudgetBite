@@ -5,7 +5,7 @@
         "ingredients": [
             "Eggs",
             "Rice",
-            "Carrots"
+            "Carrot"
         ],
         "estimatedCost": 4.50
     },
@@ -15,7 +15,7 @@
         "ingredients": [
             "Chicken",
             "Rice",
-            "Carrots"
+            "Carrot"
         ],
         "estimatedCost": 5.50
     },
@@ -25,28 +25,28 @@
         "ingredients": [
             "Pasta",
             "Tomato",
-            "Carrots"
+            "Carrot"
         ],
         "estimatedCost": 4.00
-    }
+    },
     {
-            "id": "recipe004",
-            "name": "Chicken Pasta",
-            "ingredients": [
-                "Chicken",
-                "Pasta",
-                "Tomato"
-            ],
-            "estimatedCost": 6.00
-        },
-        {
-            "id": "recipe006",
-            "name": "Vegetable Rice Bowl",
-            "ingredients": [
-                "Rice",
-                "Carrots",
-                "Tomato"
-            ],
-            "estimatedCost": 4.50
-        }
+        "id": "recipe004",
+        "name": "Chicken Pasta",
+        "ingredients": [
+            "Chicken",
+            "Pasta",
+            "Tomato"
+        ],
+        "estimatedCost": 6.00
+    },
+    {
+        "id": "recipe005",
+        "name": "Vegetable Rice Bowl",
+        "ingredients": [
+            "Rice",
+            "Carrot",
+            "Tomato"
+        ],
+        "estimatedCost": 4.50
+    }
 ]

@@ -1,7 +1,7 @@
 [
     {
         "id": "ingredient001",
-        "name": "Eggs",
+        "name": "Egg",
         "quantity": 6
     },
     {
@@ -11,16 +11,16 @@
     },
     {
         "id": "ingredient003",
-        "name": "Carrots",
+        "name": "Carrot",
         "quantity": 3
-    }
+    },
     {
         "id": "ingredient004",
         "name": "Chicken",
         "quantity": 2
     },
     {
-        "id": "ingredient006",
+        "id": "ingredient005",
         "name": "Pasta",
         "quantity": 1
     }
