@@ -27,18 +27,18 @@ struct UpdateFoodBudgetUseCase { // Business logic: what should happen to the fo
             }
         }
     }
-    func execute( // Function that performs the update where it takes current budget and previous budget, and returns updated Budget
+    func execute( /// Function that performs the update where it takes current budget and previous budget, and returns updated Budget
         budget: Budget,
         spending: Double
     ) throws -> Budget {
-        guard spending >= 0 else { // Checks that spending is not less than $0
+        guard spending >= 0 else { /// Checks that spending is not less than $0
             throw UpdateFoodBudgetError.negativeSpending
         }
-        guard spending <= budget.remainingBudget else { // Check that spending is not greater than the budget
+        guard spending <= budget.remainingBudget else { ///Check that spending is not greater than the budget
             throw UpdateFoodBudgetError.spendingExceedsRemainingBudget
         }
         var updatedBudget = budget
-        updatedBudget.remainingBudget -= spending // The remaining budget is reduced by the amount spent
+        updatedBudget.remainingBudget -= spending /// The remaining budget is reduced by the amount spent
         return updatedBudget
     }
 }
