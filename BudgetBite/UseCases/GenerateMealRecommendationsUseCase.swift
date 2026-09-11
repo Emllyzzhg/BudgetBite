@@ -42,24 +42,12 @@ struct GenerateMealRecommendationsUseCase { /// Business logic: given the studen
                 normaliseIngredientName($0.name)
             }
         )
-        
-        for recipe in affordableRecipes {
-            let matches = recipe.ingredients.filter {
-                availableIngredientNames.contains(
-                    normaliseIngredientName($0)
-                )
-            }.count
-            
-            print("\(recipe.name): \(matches) matching ingredients")
-        }
-
-        
         return affordableRecipes.sorted { recipe1, recipe2 in /// Sort affordable recipes and sort them by the number of ingredients the student already has
             let recipe1Matches = recipe1.ingredients.filter {
-                ingredient in availableIngredientNames.contains(ingredient.lowercased())
+                availableIngredientNames.contains(normaliseIngredientName($0))
             }.count
             let recipe2Matches = recipe2.ingredients.filter {
-                ingredient in availableIngredientNames.contains(ingredient.lowercased())
+                availableIngredientNames.contains(normaliseIngredientName($0))
             }.count
             return recipe1Matches > recipe2Matches /// If the recipe has more matching ingredients, put it before the recipe with less matching ingredients
         }
