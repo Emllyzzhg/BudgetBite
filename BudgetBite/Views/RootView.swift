@@ -30,11 +30,13 @@ struct RootView: View {
         )
         /// Creates the use case responsible for updating the user's food budget
         let budgetUseCase = UpdateFoodBudgetUseCase()
+        let setBudgetUseCase = SetWeeklyBudgetUseCase()
         /// Creates the BudgetViewModel using the initial budget and budget update use case
         _budgetViewModel = StateObject(
             wrappedValue: BudgetViewModel(
                 budget: initialBudget,
-                updateBudgetUseCase: budgetUseCase
+                updateBudgetUseCase: budgetUseCase,
+                setWeeklyBudgetUseCase: setBudgetUseCase
             )
         )
         /// Creates the IngredientViewModel and connects it to the local ingredient repository so that ingredients can be managed

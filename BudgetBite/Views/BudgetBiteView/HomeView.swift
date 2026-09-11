@@ -15,6 +15,9 @@ struct HomeView: View {
     /// Gets access to the BudgetViewModel so that it displays the student's current food budget information
     @EnvironmentObject private var budgetViewModel: BudgetViewModel
     
+    @State private var showingBudgetEditor = false
+    @State private var newBudgetAmount = ""
+    
     /// Defines user interface displayed by this view
     var body: some View {
         /// Creates a navigation container to move from the home screen to other views in the app
@@ -37,6 +40,21 @@ struct HomeView: View {
                     .foregroundColor(.secondary)
                 }
                 .padding()
+                
+                if let errorMessage = budgetViewModel.errorMessage {
+                    Text(errorMessage)
+                        .font(.footnote)
+                        .foregroundColor(.red)
+                        .multilineTextAlignment(.center)
+                }
+                
+                Button("Edit Weekly Budget", systemImage: "pencil") {
+                    newBudgetAmount = String(
+                        format: "%.2f", budgetViewModel.budget.weeklyBudget
+                    )
+                    showingBudgetEditor = true
+                }
+                .buttonStyle(.bordered)
                 
                 /// Creates a navigation button labelled "View Meal Suggestions" which takes the student  to MealRecommendationsView
                 NavigationLink {MealRecommendationsView()
@@ -68,6 +86,35 @@ struct HomeView: View {
             }
             .padding()
             .navigationTitle("Food Budget")
+            .sheet(isPresented: $showingBudgetEditor){
+                NavigationStack {
+                    Form {
+                        Section("Weekly Food Budget"){
+                            TextField("Budget amount", text: $newBudgetAmount
+                            )
+                            .keyboardType(.decimalPad)
+                        }
+                        Section {
+                            Button("Save Budget") {
+                                if let amount = Double(newBudgetAmount) {
+                                    budgetViewModel.setWeeklyBudget (amount)
+                                    if budgetViewModel.errorMessage == nil {
+                                        showingBudgetEditor = false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .navigationTitle("Edit Budget")
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel") {
+                                showingBudgetEditor = false
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

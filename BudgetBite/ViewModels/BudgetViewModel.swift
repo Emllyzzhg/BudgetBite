@@ -15,16 +15,19 @@ final class BudgetViewModel: ObservableObject {
     /// The current budget displayed by the SwiftUI view
     @Published var budget: Budget
     @Published var errorMessage: String?
-    /// Stores the UpdateFoodBudgetUseCase to be used by this view model
+    /// Stores the UpdateFoodBudgetUseCase and SetWeeklyBudgetUseCase to be used by this view model
     private let updateBudgetUseCase: UpdateFoodBudgetUseCase
+    private let setWeeklyBudgetUseCase: SetWeeklyBudgetUseCase
     
-    /// Create the ViewModel with the current budget and UpdateFoodBudgetUseCase
+    /// Create the ViewModel with the current budget, UpdateFoodBudgetUseCase and SetWeeklyBudgetUseCase
     init(
         budget: Budget,
-        updateBudgetUseCase: UpdateFoodBudgetUseCase
+        updateBudgetUseCase: UpdateFoodBudgetUseCase,
+        setWeeklyBudgetUseCase: SetWeeklyBudgetUseCase
     ) {
         self.budget = budget
         self.updateBudgetUseCase = updateBudgetUseCase
+        self.setWeeklyBudgetUseCase = setWeeklyBudgetUseCase
     }
     /// Function to update budget using the current budget and spending amount
     func updateBudget(spending: Double) {
@@ -34,7 +37,17 @@ final class BudgetViewModel: ObservableObject {
                 spending: spending
             )
             errorMessage = nil
-        } catch { // If UpdateFoodBudgetUseCase throws error, catch runs
+        } catch { /// If UpdateFoodBudgetUseCase throws error, catch runs
+            errorMessage = error.localizedDescription
+        }
+    }
+    /// Function to update the weekly budget with the newly entered amount
+    func setWeeklyBudget(_ newWeeklyBudget: Double) {
+        do {budget = try setWeeklyBudgetUseCase.execute(
+            currentBudget: budget, newWeeklyBudget: newWeeklyBudget
+            )
+            errorMessage = nil
+        } catch {
             errorMessage = error.localizedDescription
         }
     }
