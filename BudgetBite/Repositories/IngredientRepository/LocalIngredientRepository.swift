@@ -18,7 +18,8 @@ class LocalIngredientRepository: IngredientRepository {
         let localIngredients = [
             Ingredient(name: "Egg", quantity: 6),
             Ingredient(name: "Rice", quantity: 1),
-            Ingredient(name: "Carrots", quantity: 3)
+            Ingredient(name: "Carrots", quantity: 3),
+            Ingredient(name: "Tomatoes", quantity: 3)
         ]
         
         return localIngredients
