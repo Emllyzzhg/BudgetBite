@@ -16,6 +16,11 @@
 			path = BudgetBite;
 			sourceTree = "<group>";
 		};
+		9F90C23B30543C500040E452 /* BudgetBiteTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BudgetBiteTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		9F90C13C30459A560040E452 = {
 			isa = PBXGroup;
 			children = (
+				9F90C23B30543C500040E452 /* BudgetBiteTests */,
 				9F90C14730459A560040E452 /* BudgetBite */,
 				9F90C14630459A560040E452 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				9F90C14730459A560040E452 /* BudgetBite */,
+				9F90C23B30543C500040E452 /* BudgetBiteTests */,
 			);
 			name = BudgetBite;
 			packageProductDependencies = (

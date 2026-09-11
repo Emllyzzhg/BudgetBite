@@ -17,6 +17,11 @@ struct MealRecommendationsView: View {
     @EnvironmentObject private var mealRecommendationViewModel:MealRecommendationViewModel
     @EnvironmentObject private var mealPlanViewModel: MealPlanViewModel
     
+    /// State variables used to store the student's selected recipe, selected date, and whether the date picker is displayed
+    @State private var selectedRecipe: Recipe?
+    @State private var selectedDate = Date()
+    @State private var showingDatePicker = false
+    
     /// Defines user interface displayed by this view
     var body: some View {
         /// Creates a list to display the available meal recommendations
@@ -52,13 +57,9 @@ struct MealRecommendationsView: View {
                         
                         /// Creates an "Add to Meal Plan" button that allows the student to add the selected recipe to their meal plan
                         Button("Add to Meal Plan") {
-                            /// Adds the selected recipe to the student's meal plan. The meal is assigned the current date as its planned date
-                            mealPlanViewModel.add(
-                                MealPlanEntry(
-                                    recipe: recipe,
-                                    plannedDate: Date()
-                                )
-                            )
+                            selectedRecipe = recipe
+                            selectedDate = Date()
+                            showingDatePicker = true
                         }
                     }
                     .padding(.vertical, 4)
@@ -71,6 +72,40 @@ struct MealRecommendationsView: View {
             mealRecommendationViewModel.generateRecommendations(
                 budget: budgetViewModel.budget
             )
+        }
+        .sheet(isPresented: $showingDatePicker) {
+            NavigationStack {
+                Form {
+                    Section("Choose a day") {
+                        DatePicker(
+                            "Meal date",
+                            selection: $selectedDate,
+                            displayedComponents: .date
+                        )
+                    }
+                    Section {
+                        Button("Add to Meal Plan") {
+                            if let recipe = selectedRecipe {
+                                mealPlanViewModel.add(
+                                    MealPlanEntry(
+                                        recipe: recipe,
+                                        plannedDate: selectedDate
+                                    )
+                                )
+                                showingDatePicker = false
+                            }
+                        }
+                    }
+                }
+                .navigationTitle("Plan Meal")
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            showingDatePicker = false
+                        }
+                    }
+                }
+            }
         }
     }
 }
