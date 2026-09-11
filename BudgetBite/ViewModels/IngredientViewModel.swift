@@ -14,6 +14,9 @@ import Combine
 final class IngredientViewModel: ObservableObject {
     /// The current list of available ingredients
     @Published var ingredients: [Ingredient] = []
+    /// Stores an error message to display to the student.
+    @Published var errorMessage: String?
+    
     /// Stores the IngredientRepository and ManageAvailableUseCase to be used by this view model
     private let repository: IngredientRepository
     private let manageIngredientsUseCase: ManageAvailableIngredientsUseCase
@@ -34,18 +37,22 @@ final class IngredientViewModel: ObservableObject {
     func add(_ ingredient: Ingredient) {
         do {
             try manageIngredientsUseCase.add(ingredient)
+            /// Clears any previous error after a successful operation.
+            errorMessage = nil
             load()
         } catch {
-            print(error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
     /// Function to delete an ingredient from the available ingredients and reloads the ingredient list
     func delete(_ ingredient: Ingredient) {
         do {
             try manageIngredientsUseCase.remove(ingredient)
+            /// Clears any previous error after a successful operation.
+            errorMessage = nil
             load()
         } catch {
-            print(error.localizedDescription)
+            errorMessage = error.localizedDescription
         }
     }
 }
