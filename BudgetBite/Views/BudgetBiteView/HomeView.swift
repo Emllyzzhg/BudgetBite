@@ -17,6 +17,7 @@ struct HomeView: View {
     
     @State private var showingBudgetEditor = false
     @State private var newBudgetAmount = ""
+    @State private var budgetErrorMessage: String?
     
     /// Defines user interface displayed by this view
     var body: some View {
@@ -49,6 +50,7 @@ struct HomeView: View {
                 }
                 
                 Button("Edit Weekly Budget", systemImage: "pencil") {
+                    budgetErrorMessage = nil
                     newBudgetAmount = String(
                         format: "%.2f", budgetViewModel.budget.weeklyBudget
                     )
@@ -93,14 +95,22 @@ struct HomeView: View {
                             TextField("Budget amount", text: $newBudgetAmount
                             )
                             .keyboardType(.decimalPad)
+                            if let budgetErrorMessage = budgetErrorMessage {
+                                Text(budgetErrorMessage)
+                                    .font(.footnote)
+                                    .foregroundColor(.red)
+                            }
                         }
                         Section {
                             Button("Save Budget") {
-                                if let amount = Double(newBudgetAmount) {
+                                if let amount = Double(newBudgetAmount), amount > 0 {
+                                    budgetErrorMessage = nil
                                     budgetViewModel.setWeeklyBudget (amount)
                                     if budgetViewModel.errorMessage == nil {
                                         showingBudgetEditor = false
                                     }
+                                } else {
+                                    budgetErrorMessage = "Please enter a valid budget greater than $0."
                                 }
                             }
                         }
