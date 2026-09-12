@@ -19,14 +19,23 @@ struct HomeView: View {
     @State private var newBudgetAmount = ""
     @State private var budgetErrorMessage: String?
     
+    /// Calculates the number of days remaining in the current week
+    private var daysRemaining: Int {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: Date())
+        
+        /// Sunday = 1, Monday = 2, ..., Saturday = 7
+        return 8 - weekday
+    }
+    
     /// Defines user interface displayed by this view
     var body: some View {
         /// Creates a navigation container to move from the home screen to other views in the app
         NavigationStack {
             VStack(spacing: 24) {
                 VStack(spacing: 8) {
-                    /// Displays the heading "Remaining Food Budget" and the font
-                    Text("Welcome, BudgetBite")
+                    /// Displays the number of days left in the current week
+                    Text("\(daysRemaining) days left this week")
                         .font(.headline)
                     /// Displays the student's remaining food budget in AUD
                     Text(budgetViewModel.budget.remainingBudget,format:.currency(code: "AUD")
@@ -87,7 +96,7 @@ struct HomeView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("BudgetBite")
+            .navigationTitle("Hello, BudgetBite")
             .sheet(isPresented: $showingBudgetEditor){
                 NavigationStack {
                     Form {
