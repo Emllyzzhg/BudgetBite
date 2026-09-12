@@ -9,13 +9,13 @@ import Foundation
 import Combine
 
 /// Manages the budget data displayed by the SwiftUI view
-/// BudgetViewModel communicates with UpdateFoodBudgetUseCase to update the budget when the user changes their spending
+/// BudgetViewModel communicates with budget-related Use Cases to update the budget when spending, restoring budget, or setting a new weekly budget
 
 final class BudgetViewModel: ObservableObject {
     /// The current budget displayed by the SwiftUI view
     @Published var budget: Budget
     @Published var errorMessage: String?
-    /// Stores the UpdateFoodBudgetUseCase and SetWeeklyBudgetUseCase to be used by this view model
+    /// Stores the UpdateFoodBudgetUseCase, RestoreFoodBudgetUseCase and SetWeeklyBudgetUseCase to be used by this view model
     private let updateBudgetUseCase: UpdateFoodBudgetUseCase
     private let restoreFoodBudgetUseCase: RestoreFoodBudgetUseCase
     private let setWeeklyBudgetUseCase: SetWeeklyBudgetUseCase

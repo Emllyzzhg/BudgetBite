@@ -50,7 +50,7 @@ struct MealPlanView: View {
                         .font(.subheadline)
                     }
                 }
-                /// Adds swipe-to-delete functionality to the ingredient list. It identifies the position of the ingredient that the student wants to delete
+                /// Adds swipe-to-delete functionality to the meal plan. It identifies the position of the ingredient that the student wants to delete
                 .onDelete { indexSet in
                     for index in indexSet {
                         let meal = mealPlanViewModel.plannedMeals[index]

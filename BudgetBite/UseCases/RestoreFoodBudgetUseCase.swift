@@ -14,14 +14,17 @@ import Foundation
 /// 2. The remaining budget cannot be greater than the weekly budget
 /// 3. The restored amount is added to the remaining budget
 
-struct RestoreFoodBudgetUseCase { /// Business logic: what should happen to the food budget after deleting a recommended meal occurs
+struct RestoreFoodBudgetUseCase { /// Business logic: restores the committed meal cost to the student's remaining food budget when a planned meal is removed 
     enum RestoreFoodBudgetError: LocalizedError, Equatable {
         case negativeRestoreAmount
+        case restoreExceedsWeeklyBudget
         
         var errorDescription: String? {
             switch self {
             case .negativeRestoreAmount:
                 return "The amount to restore cannot be negative. Please enter a valid amount."
+            case .restoreExceedsWeeklyBudget:
+                return "The amount to restore would exceed the weekly budget."
             }
         }
     }
@@ -33,7 +36,9 @@ struct RestoreFoodBudgetUseCase { /// Business logic: what should happen to the 
         guard amount >= 0 else {
             throw RestoreFoodBudgetError.negativeRestoreAmount
         }
-        
+        guard budget.remainingBudget + amount <= budget.weeklyBudget else {
+            throw RestoreFoodBudgetError.restoreExceedsWeeklyBudget
+        }
         var updatedBudget = budget
         updatedBudget.remainingBudget += amount
         

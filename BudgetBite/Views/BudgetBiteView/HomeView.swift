@@ -26,7 +26,7 @@ struct HomeView: View {
             VStack(spacing: 24) {
                 VStack(spacing: 8) {
                     /// Displays the heading "Remaining Food Budget" and the font
-                    Text("Remaining Food Budget")
+                    Text("Welcome, BudgetBite")
                         .font(.headline)
                     /// Displays the student's remaining food budget in AUD
                     Text(budgetViewModel.budget.remainingBudget,format:.currency(code: "AUD")

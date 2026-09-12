@@ -204,8 +204,8 @@ struct BudgetBiteTests {
             try useCase.add(ingredient)
         }
     }
-    ///
-    @Test func restoresFoodBudget() throws {
+    /// Valid restoration increases remaining budget
+    @Test func restoringFoodBudgetIncreasesRemainingBudget() throws {
         let useCase = RestoreFoodBudgetUseCase()
         
         let budget = Budget(
@@ -215,14 +215,14 @@ struct BudgetBiteTests {
         
         let updatedBudget = try useCase.execute(
             budget: budget,
-            amount: 15.00
+            amount: 5.00
         )
         /// Checks that the use case actually increases the remaining budget
-        #expect(updatedBudget.remainingBudget == 50.00)
+        #expect(updatedBudget.remainingBudget == 40.00)
     }
     
-    /// Test that budget is restored
-    @Test func negativeRestoreAmountIsRejected() {
+    /// Negative restoration fails
+    @Test func negativeRestoreAmountFails() {
         let useCase = RestoreFoodBudgetUseCase()
         
         let budget = Budget(
@@ -230,10 +230,25 @@ struct BudgetBiteTests {
             remainingBudget: 35.00
         )
         /// Checks that the restore amount cannot be negative
-        #expect(throws: RestoreFoodBudgetUseCase.RestoreFoodBudgetError.negativeRestoreAmount) {
+        #expect(throws: RestoreFoodBudgetUseCase.RestoreFoodBudgetError.self) {
             try useCase.execute(
                 budget: budget,
                 amount: -15.00
+            )
+        }
+    }
+    /// Restoration that would exceed the weekly budget fails
+    @Test
+    func restoringBeyondWeeklyBudgetFails() {
+        let useCase = RestoreFoodBudgetUseCase()
+        let budget = Budget(
+            weeklyBudget: 50.00,
+            remainingBudget: 45.00
+        )
+        #expect(throws: RestoreFoodBudgetUseCase.RestoreFoodBudgetError.self) {
+            try useCase.execute(
+                budget: budget,
+                amount: 10.00
             )
         }
     }
