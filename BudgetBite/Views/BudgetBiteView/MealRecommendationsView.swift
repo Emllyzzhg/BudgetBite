@@ -21,7 +21,7 @@ struct MealRecommendationsView: View {
     @State private var selectedDate = Date()
     @State private var showingDatePicker = false
     @State private var selectedRecommendation: MealRecommendation?
-    
+    @State private var showingBudgetError = false
     
     /// Defines user interface displayed by this view
     var body: some View {
@@ -105,20 +105,33 @@ struct MealRecommendationsView: View {
                                         )
                                     )
                                     showingDatePicker = false
+                                } else {
+                                    showingBudgetError = true
                                 }
                             }
                         }
                     }
-                    .navigationTitle("Plan Meal")
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") {
-                                showingDatePicker = false
-                            }
+                }
+                .navigationTitle("Plan Meal")
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            showingDatePicker = false
                         }
                     }
                 }
             }
+        }
+        .alert(
+            "Not Enough Food Budget",
+            isPresented: $showingBudgetError
+        ){
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(
+                budgetViewModel.errorMessage ??
+                "You don't have enough remaining food budget for this meal."
+            )
         }
     }
 }

@@ -87,7 +87,7 @@ struct HomeView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Food Budget")
+            .navigationTitle("BudgetBite")
             .sheet(isPresented: $showingBudgetEditor){
                 NavigationStack {
                     Form {
