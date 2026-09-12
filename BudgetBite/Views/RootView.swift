@@ -30,12 +30,14 @@ struct RootView: View {
         )
         /// Creates the use case responsible for updating the user's food budget
         let budgetUseCase = UpdateFoodBudgetUseCase()
+        let restoreBudgetUseCase = RestoreFoodBudgetUseCase()
         let setBudgetUseCase = SetWeeklyBudgetUseCase()
         /// Creates the BudgetViewModel using the initial budget and budget update use case
         _budgetViewModel = StateObject(
             wrappedValue: BudgetViewModel(
                 budget: initialBudget,
                 updateBudgetUseCase: budgetUseCase,
+                restoreFoodBudgetUseCase: restoreBudgetUseCase,
                 setWeeklyBudgetUseCase: setBudgetUseCase
             )
         )

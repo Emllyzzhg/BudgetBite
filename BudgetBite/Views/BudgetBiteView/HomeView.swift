@@ -92,9 +92,14 @@ struct HomeView: View {
                 NavigationStack {
                     Form {
                         Section("Weekly Food Budget"){
+                            /// Explains that changing the weekly budget will reset the remaining budget.
+                            Text("Changing your weekly budget will reset your remaining budget.")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
                             TextField("Budget amount", text: $newBudgetAmount
                             )
                             .keyboardType(.decimalPad)
+                            
                             if let budgetErrorMessage = budgetErrorMessage {
                                 Text(budgetErrorMessage)
                                     .font(.footnote)

@@ -7,7 +7,7 @@
 
 import Foundation
  
-/// Use Case 2: manages the ingredients currently available to a university student. Repository gives use case ingredients so it can apply the business rules
+/// Use Case 2: manages the ingredients currently available to a university student
 /// 
 /// Business rules:
 /// 1. An ingredient must have a quantity greater than 0

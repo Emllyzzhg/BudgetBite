@@ -16,9 +16,33 @@ class LocalRecipeRepository: RecipeRepository {
     
     func load() -> [Recipe] {
         let localRecipes = [
-            Recipe(name: "Egg Fried Rice", ingredients: ["Rice", "Egg", "Carrot"], estimatedCost: 4.50),
-            Recipe(name: "Chicken Rice Bowl", ingredients: ["Chicken", "Rice", "Carrot"], estimatedCost: 5.50),
-            Recipe(name: "Vegetable Pasta", ingredients: ["Pasta", "Tomato", "Carrot"], estimatedCost: 4.00)
+            Recipe(
+                name: "Egg Fried Rice",
+                ingredients: [
+                    RecipeIngredient(name: "Egg", price: 1.50),
+                    RecipeIngredient(name: "Rice", price: 2.00),
+                    RecipeIngredient(name: "Carrot", price: 1.00)
+                ],
+                estimatedCost: 4.50
+            ),
+            Recipe(
+                name: "Chicken Rice Bowl",
+                ingredients: [
+                    RecipeIngredient(name: "Chicken", price: 2.50),
+                    RecipeIngredient(name: "Rice", price: 2.00),
+                    RecipeIngredient(name: "Carrot", price: 1.00)
+                ],
+                estimatedCost: 5.50
+            ),
+            Recipe(
+                name: "Vegetable Pasta",
+                ingredients: [
+                    RecipeIngredient(name: "Pasta", price: 1.50),
+                    RecipeIngredient(name: "Tomato", price: 1.50),
+                    RecipeIngredient(name: "Carrot", price: 1.00)
+                ],
+                estimatedCost: 4.00
+            )
         ]
         
         return localRecipes

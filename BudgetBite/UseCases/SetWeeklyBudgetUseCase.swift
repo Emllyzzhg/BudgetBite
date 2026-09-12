@@ -6,13 +6,13 @@
 //
 
 import Foundation
-/// Use Case 4: sets a university student's weekly food budget. 
+/// Use Case 4: sets a university student's weekly food budget 
 ///
 /// Business rules:
 /// 1. The weekly budget must be greater than zero
 /// 2 Setting a new weekly budget resets the remaining budget to the new weekly budget amount
 
-struct SetWeeklyBudgetUseCase { /// Business logic: what should happen id the student starts/restarts their weekly budget
+struct SetWeeklyBudgetUseCase { /// Business logic: what should happen if the student starts/restarts their weekly budget
     
     enum BudgetError: LocalizedError, Equatable {
         case invalidBudgetAmount

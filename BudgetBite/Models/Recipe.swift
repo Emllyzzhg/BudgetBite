@@ -14,10 +14,15 @@ import Foundation
 /// 2. The estimated cost cannot be negative
 /// 3. A recipe can only be recommended when its estimated cost is within the student's remaining budget
 
+struct RecipeIngredient: Codable {
+    var name: String
+    var price: Double
+}
+
 struct Recipe: Identifiable, Codable {
     
     var id: String = UUID().uuidString
     var name: String
-    var ingredients: [String]
+    var ingredients: [RecipeIngredient]
     var estimatedCost: Double
 }

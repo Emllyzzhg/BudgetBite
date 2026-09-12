@@ -7,14 +7,14 @@
 
 import Foundation
  
-/// Use Case 1: updates a university student's remaining food budget after spending. Receives the current budget and spending amount, and apply the budget business rules
+/// Use Case 1: updates a university student's remaining food budget when money is spent or committed to a planned meal. Receives the current budget and spending amount, and apply the budget business rules
 ///
 /// Business rules:
 /// 1. Spending cannot be less than $0 or a negative number
 /// 2. Spending cannot be greater than the student's remaining budget
 /// 3. The remaining budget is reduced by the amount spent
 
-struct UpdateFoodBudgetUseCase { // Business logic: what should happen to the food budget after spending occurs
+struct UpdateFoodBudgetUseCase { /// Business logic: what should happen to the food budget after spending occurs
     enum UpdateFoodBudgetError: LocalizedError, Equatable {
         case negativeSpending
         case spendingExceedsRemainingBudget

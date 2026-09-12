@@ -20,6 +20,9 @@ final class MealPlanViewModel: ObservableObject {
     }
     /// Function to delete a meal from the meal plan
     func delete(_ meal: MealPlanEntry) {
-        plannedMeals.removeAll { $0.id == meal.id }
+        guard let index = plannedMeals.firstIndex(where: { $0.id == meal.id }) else {
+            return
+        }
+        plannedMeals.remove(at: index)
     }
 }

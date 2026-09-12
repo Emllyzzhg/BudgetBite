@@ -3,9 +3,18 @@
         "id": "recipe001",
         "name": "Egg Fried Rice",
         "ingredients": [
-            "Eggs",
-            "Rice",
-            "Carrot"
+            {
+                "name": "Egg",
+                "price": 1.50
+            },
+            {
+                "name": "Rice",
+                "price": 2.00
+            },
+            {
+                "name": "Carrot",
+                "price": 1.00
+            }
         ],
         "estimatedCost": 4.50
     },
@@ -13,9 +22,18 @@
         "id": "recipe002",
         "name": "Chicken Rice Bowl",
         "ingredients": [
-            "Chicken",
-            "Rice",
-            "Carrot"
+            {
+                "name": "Chicken",
+                "price": 2.50
+            },
+            {
+                "name": "Rice",
+                "price": 2.00
+            },
+            {
+                "name": "Carrot",
+                "price": 1.00
+            }
         ],
         "estimatedCost": 5.50
     },
@@ -23,9 +41,18 @@
         "id": "recipe003",
         "name": "Vegetable Pasta",
         "ingredients": [
-            "Pasta",
-            "Tomato",
-            "Carrot"
+            {
+                "name": "Pasta",
+                "price": 1.50
+            },
+            {
+                "name": "Tomato",
+                "price": 1.50
+            },
+            {
+                "name": "Carrot",
+                "price": 1.00
+            }
         ],
         "estimatedCost": 4.00
     },
@@ -33,9 +60,18 @@
         "id": "recipe004",
         "name": "Chicken Pasta",
         "ingredients": [
-            "Chicken",
-            "Pasta",
-            "Tomato"
+            {
+                "name": "Chicken",
+                "price": 2.50
+            },
+            {
+                "name": "Pasta",
+                "price": 2.00
+            },
+            {
+                "name": "Tomato",
+                "price": 1.50
+            }
         ],
         "estimatedCost": 6.00
     },
@@ -43,9 +79,18 @@
         "id": "recipe005",
         "name": "Vegetable Rice Bowl",
         "ingredients": [
-            "Rice",
-            "Carrot",
-            "Tomato"
+            {
+                "name": "Rice",
+                "price": 2.00
+            },
+            {
+                "name": "Carrot",
+                "price": 1.00
+            },
+            {
+                "name": "Tomato",
+                "price": 1.50
+            }
         ],
         "estimatedCost": 4.50
     }

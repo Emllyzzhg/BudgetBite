@@ -12,8 +12,9 @@ import SwiftUI
 /// Defines MealPlanView as a SwiftUI view
 struct MealPlanView: View {
     
-    /// Gets access to the MealPlanViewModel so that it displays the student's planned meals and the functions needed to manage them
+    /// Gets access to the MealPlanViewModel and BudgetViewModel so that it displays the student's planned meals and the functions needed to manage them
     @EnvironmentObject private var mealPlanViewModel: MealPlanViewModel
+    @EnvironmentObject private var budgetViewModel: BudgetViewModel
     
     /// Defines user interface displayed by this view
     var body: some View {
@@ -29,12 +30,12 @@ struct MealPlanView: View {
                         "Choose meals from Meal Suggestions to build your weekly plan."
                     )
                 )
-            ///  If the meal plan is not empty, the app displays the planned meals
+                ///  If the meal plan is not empty, the app displays the planned meals
             } else {
                 /// Goes through the planned meals stored in mealPlanViewModel.plannedMeals and displays each meal
                 ForEach(mealPlanViewModel.plannedMeals) { meal in
                     VStack(alignment: .leading, spacing: 4) {
-                        /// Displays the meal name, planned date, and estimated cost in AUD for each planned meal
+                        /// Displays the meal name, planned date, and committed cost in AUD for each planned meal
                         Text(meal.recipe.name)
                             .font(.headline)
                         
@@ -43,7 +44,7 @@ struct MealPlanView: View {
                             .foregroundStyle(.secondary)
                         
                         Text(
-                            meal.recipe.estimatedCost,
+                            meal.costToBuy,
                             format: .currency(code: "AUD")
                         )
                         .font(.subheadline)
@@ -53,7 +54,12 @@ struct MealPlanView: View {
                 .onDelete { indexSet in
                     for index in indexSet {
                         let meal = mealPlanViewModel.plannedMeals[index]
-                        mealPlanViewModel.delete(meal)
+                        let budgetUpdated = budgetViewModel.restoreBudget(
+                            amount: meal.costToBuy
+                        )
+                        if budgetUpdated {
+                            mealPlanViewModel.delete(meal)
+                        }
                     }
                 }
             }
