@@ -21,8 +21,11 @@ struct RootView: View {
     /// Initialises the RootView and sets up the repositories, budget, and view models required by the application
     init() {
         /// Creates the local repositories used to access ingredient and recipe data
-        let ingredientRepository = LocalIngredientRepository()
-        let recipeRepository = LocalRecipeRepository()
+        //let ingredientRepository = LocalIngredientRepository()
+        //let recipeRepository = LocalRecipeRepository()
+        /// Creates the JSON repositories used to access ingredient and recipe data
+        let ingredientRepository = JSONIngredientRepository()
+        let recipeRepository = JSONRecipeRepository()
         /// Creates the initial food budget with a weekly budget of $50.00 and a remaining budget of $20.00
         let initialBudget = Budget(
             weeklyBudget: 50.00,
