@@ -81,7 +81,9 @@ struct RootView: View {
             }
             
             Tab("My Plan", systemImage: "calendar") {
-                MealPlanView()
+                NavigationStack {
+                    MealPlanView()
+                }
             }
         }
         .environmentObject(budgetViewModel)
