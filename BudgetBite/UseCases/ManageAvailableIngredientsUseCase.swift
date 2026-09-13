@@ -32,13 +32,18 @@ struct ManageAvailableIngredientsUseCase { /// Business logic: what should happe
         guard ingredient.quantity > 0 else { /// Checks that quantity is greater than 0
             throw IngredientError.invalidQuantity
         }
+        /// Checks whether the ingredient already exists
         if let existingIngredient = repository.ingredients.first( /// Checks spelling of same ingredient for capitalisation
-            where: { existingIngredient in existingIngredient.name.lowercased() == ingredient.name.lowercased() }
+            where: { existingIngredient in
+                normaliseIngredientName(existingIngredient.name) ==
+                normaliseIngredientName(ingredient.name)
+            }
         ) {
+            /// If the ingredient exists, increase its quantity
             var updatedIngredient = existingIngredient /// If the ingredient exists, quantity must increase
             updatedIngredient.quantity += ingredient.quantity
             repository.update(updatedIngredient)
-        } else { // If ingredient does not exist, add as new
+        } else { /// If ingredient does not exist, add as new
             repository.add(ingredient)
         }
     }
@@ -49,5 +54,18 @@ struct ManageAvailableIngredientsUseCase { /// Business logic: what should happe
             throw IngredientError.ingredientNotFound
         }
         repository.delete(ingredient) /// If ingredient exists, repository removes it
+    }
+    /// Normalises ingredient names so that differences such as "Carrot", "CARROT" and "Carrots" are treated as the same ingredient
+    private func normaliseIngredientName(_ name: String) -> String {
+        var ingredientName = name.lowercased()
+        ingredientName = ingredientName.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+        
+        if ingredientName.hasSuffix("s") {
+            ingredientName = String(ingredientName.dropLast())
+        }
+        
+        return ingredientName
     }
 }
